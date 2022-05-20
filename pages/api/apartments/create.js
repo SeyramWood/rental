@@ -22,7 +22,7 @@ const handler = nextConnect()
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-      cb(null, `/public/properties`);
+      cb(null, `public/properties`);
   },
   filename: (req, file, cb) => {
       const fileName = file.originalname.toLowerCase().split(' ').join('-');
