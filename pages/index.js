@@ -11,7 +11,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
-import axios from "axios";
+import Axios from '../libs/axios'
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import Product from "../components/product/Product";
 
@@ -35,8 +35,8 @@ export default function Home() {
   const handleCityChange = (e) => {
     setIsSearching(true);
     setCurrentCity((state) => (state = e.target.value));
-    axios
-      .get("http://localhost:3000/api/apartments")
+    Axios
+      .get("/apartments")
       .then((res) => {
         const results = res.data.filter((r) => {
           if (
@@ -62,8 +62,8 @@ export default function Home() {
   };
   const loadMore = () => {
     setLoading(true);
-    axios
-      .get("http://localhost:3000/api/apartments")
+    Axios
+      .get("/apartments")
       .then((res) => {
         const ln = products.length;
         const data = res.data.slice(ln, ln + 3);
@@ -77,8 +77,8 @@ export default function Home() {
       });
   };
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/cities")
+    Axios
+      .get("/cities")
       .then((res) => {
         setCities((c) => (c = [...res.data]));
         // console.log(res.data);
@@ -94,20 +94,8 @@ export default function Home() {
     }
   }, [searchKey.region, cities]);
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/products")
-      .then((res) => {
-        const data = res.data.slice(0, 3);
-        // setProducts((p) => (p = [...data]));
-        // console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/apartments")
+    Axios
+      .get("/apartments")
       .then((res) => {
         const data = res.data.slice(0, 3);
         setProducts((p) => (p = [...data]));
