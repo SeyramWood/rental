@@ -1,0 +1,3 @@
+@function column-width($with, $gutter) {
+    @return calc(#{$with} - (#{$gutter} * 2));
+}

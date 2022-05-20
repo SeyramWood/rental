@@ -1,0 +1,292 @@
+.asinyo__product {
+  width: 100%;
+  padding: 0 $container-padding 3rem $container-padding;
+  min-height: calc(
+    100vh - calc(#{$header-height} + #{$nav-height} + #{$footer-height})
+  );
+  &__breadcrumb {
+    width: 100%;
+    height: 3rem;
+    & > ul {
+      width: 100%;
+      height: 100%;
+      list-style-type: none;
+      @include flexbox;
+      justify-content: flex-start;
+      align-items: center;
+
+      & > li {
+        position: relative;
+        font-size: 1.1rem;
+        &:not(:last-child) {
+          &::after {
+            content: ">";
+            display: inline-block;
+            margin: 0 1rem;
+          }
+        }
+        & > a {
+          font-size: 1.1rem;
+          color: $main;
+        }
+
+        &:last-child {
+          cursor: default;
+          user-select: none;
+          & > a {
+            color: $text-2;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+  &__best__seller {
+    margin-bottom: $section-space;
+    padding: 2rem 0;
+    @include respond-down(sm) {
+      padding: 2rem 0;
+    }
+    &__header {
+      // padding: 0 $container-padding;
+      margin-bottom: 2rem;
+      @include respond-down(sm) {
+        padding: 0 $container-padding-sm;
+      }
+    }
+    &__products {
+      width: 100%;
+      // padding: 0 $container-padding;
+      @include grid-row;
+      @include respond-down(sm) {
+        // padding: 0 $container-padding-sm;
+      }
+      &__card {
+        // width: 100%;
+        // height: 30rem;
+        // @include grid-column(25%, 30rem, #{$column-gutter});
+        // &:nth-child(4n + 4) {
+        //   margin-right: 0;
+        // }
+      }
+    }
+  }
+  &__single__product {
+    width: 100%;
+    margin-bottom: $section-space;
+    @include flexbox;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &__image {
+      width: 25rem;
+      height: 28rem;
+      border: 1px solid $text-2;
+      & > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__metadata {
+      width: calc(100% - 25rem);
+      margin-left: 2rem;
+      &__name__price {
+        margin-bottom: 1.5rem;
+        & > h3 {
+        }
+        & > p {
+          line-height: 0;
+          margin-top: 0.3rem;
+        }
+      }
+      &__availability {
+        margin-bottom: 0.5rem;
+        & > span {
+          margin-left: 1rem;
+        }
+      }
+      &__desc {
+        margin-bottom: 1.2rem;
+      }
+      &__quantity {
+        & > strong {
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+        &__input {
+          @include flexbox;
+          & > input[type="number"] {
+            -moz-appearance: textfield;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+            }
+            &:focus {
+              outline: none;
+            }
+            width: 8rem;
+            margin: 0 0.5rem;
+          }
+        }
+      }
+      &__buttons {
+        margin-top: 2rem;
+        @include flexbox;
+        & > .product__btn:not(:last-child) {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  &__single__checked__products {
+    width: 100%;
+    margin-bottom: $section-space;
+    @include respond-down(sm) {
+      padding: 0 $container-padding-sm;
+    }
+    @include respond-down(xs) {
+      padding: 0 1rem;
+    }
+    &__header {
+      margin-bottom: 2rem;
+    }
+    &__sub__header {
+      margin-bottom: 2rem;
+    }
+    &__content {
+      @include grid-row;
+      &__card {
+        @include grid-column(20%, 30rem, 1.3rem);
+        &:nth-child(5n + 5) {
+          margin-right: 0;
+        }
+        @include respond-down(sm) {
+          @include grid-column(25%, 35rem, 1.3rem);
+          &:nth-child(n + 5) {
+            display: none;
+          }
+          &:nth-child(4n) {
+            margin-right: 0;
+          }
+        }
+        @include respond-down(xs) {
+          @include grid-column(50%, 38rem, 1.3rem);
+          &:nth-child(n + 5) {
+            display: none;
+          }
+          &:nth-child(n + 2) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__all__products {
+    width: 100%;
+    position: relative;
+    @include flexbox;
+    justify-content: flex-start;
+    &__nav {
+      width: 25%;
+      padding-right: 2rem;
+      &__wrapper {
+        width: 100%;
+        min-height: 25rem;
+        position: sticky;
+        top: calc(#{$header-height} + 1rem);
+        left: 0;
+      }
+
+      &__links {
+        list-style-type: none;
+        color: $text;
+        & > li {
+          &:not(:last-child) {
+            padding-right: 1rem;
+          }
+          & > a {
+            text-transform: uppercase;
+            color: $text-2;
+            margin: 0 0.5rem;
+            &:last-child {
+              margin-top: 0;
+            }
+          }
+          &:hover {
+            & > a {
+              color: $secondary;
+            }
+          }
+        }
+        &__dropdown {
+          list-style-type: none;
+          & > li {
+            padding: 0.2rem 1rem;
+            & > a {
+              font-size: 1.2rem;
+              text-transform: capitalize;
+              color: $text;
+              // display: block;
+              transition: all 0.3s ease-in;
+            }
+            &:hover {
+              & > a {
+                color: $secondary;
+              }
+            }
+          }
+        }
+      }
+
+      &--card {
+        @include boxshadow;
+        background-color: $white;
+        border-radius: $border-radius;
+        padding: 1rem 0;
+        &:not(:last-child) {
+          margin-bottom: 1rem !important;
+        }
+      }
+    }
+    &__main {
+      width: 75%;
+
+      &__header {
+        margin-bottom: 2rem;
+      }
+      &__sub__header {
+        margin-bottom: 2rem;
+      }
+      &__content {
+        width: 100%;
+        @include grid-row;
+
+        &__card {
+          @include grid-column(25%, 30rem, 1.3rem);
+          &:nth-child(4n + 4) {
+            margin-right: 0;
+          }
+          @include respond-down(sm) {
+            @include grid-column(25%, 35rem, 1.3rem);
+            &:nth-child(n + 5) {
+              display: none;
+            }
+            &:nth-child(4n) {
+              margin-right: 0;
+            }
+          }
+          @include respond-down(xs) {
+            @include grid-column(50%, 38rem, 1.3rem);
+            &:nth-child(n + 5) {
+              display: none;
+            }
+            &:nth-child(n + 2) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

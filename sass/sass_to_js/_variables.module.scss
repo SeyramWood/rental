@@ -1,0 +1,8 @@
+@import "../abstracts/variables";
+@import "../abstracts/function";
+@import "../abstracts/mixins";
+
+:export {
+  secondaryColor: $main;
+  color: $main;
+}

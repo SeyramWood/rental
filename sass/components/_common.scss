@@ -1,0 +1,68 @@
+button[type="button"].menu__icon {
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  border: none;
+  outline: none;
+  & > .box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    & > .line {
+      display: block;
+      width: 30px;
+      height: 3px;
+      border-radius: 9999px;
+      background-color: $white;
+      transition-duration: 0.075s;
+      transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+      &::before,
+      &::after {
+        position: absolute;
+        width: 30px;
+        height: 3px;
+        background-color: $white;
+        content: "";
+        display: block;
+        border-radius: 9999px;
+      }
+
+      &::before {
+        top: 11px;
+        left: 0;
+        right: 0;
+        transition: bottom 0.075s 0.12s ease, opacity 0.075s ease;
+      }
+      &::after {
+        left: 0;
+        right: 0;
+        bottom: 8px;
+        transition: top 0.075s 0.12s ease,
+          transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+    }
+  }
+  &.active {
+    & > .box {
+      & > .line {
+        background: transparent;
+        &::before {
+          top: 0;
+          left: 0;
+          right: 0;
+          transform: rotate(45deg);
+        }
+        &::after {
+          left: 0;
+          right: 0;
+          bottom: -2.5px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}

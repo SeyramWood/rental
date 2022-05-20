@@ -1,0 +1,233 @@
+.asinyo__footer {
+  width: 100%;
+  &__newsletter {
+    width: 100%;
+    height: 10rem;
+    padding: 0 $container-padding;
+    background-color: $main;
+    border-bottom: 1px solid $white;
+    @include flexbox;
+    justify-content: flex-start;
+    align-items: center;
+    @include respond-down(sm) {
+      padding: 0 $container-padding-sm;
+      height: 8rem;
+    }
+    @include respond-down(xs) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 1rem;
+      height: 14rem;
+    }
+    &__cta {
+      width: 40%;
+      color: $white;
+      & > h3 {
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+      & > p {
+        display: block;
+        @include respond-down(xs) {
+          display: none;
+        }
+      }
+      @include respond-down(sm) {
+        width: 50%;
+      }
+      @include respond-down(xs) {
+        width: 100%;
+      }
+    }
+    &__form {
+      width: 60%;
+      @include respond-down(sm) {
+        width: 50%;
+      }
+      @include respond-down(xs) {
+        width: 100%;
+      }
+      & > form {
+        width: 100%;
+        padding: 0 0 0 4rem;
+        @include flexbox;
+        justify-content: flex-start;
+        align-items: center;
+        @include respond-down(sm) {
+          padding: 0 0 0 2rem;
+        }
+        @include respond-down(xs) {
+          padding: 0;
+        }
+        & > input[type="email"] {
+          width: calc(100% - 8rem);
+          height: 3.5rem;
+          border: none;
+          outline: none;
+          caret-color: $main;
+          font-size: 1.1rem;
+          font-weight: 100;
+          color: $text;
+          border-radius: $border-radius;
+          padding: 0 1rem;
+          margin-right: 1rem;
+          &::placeholder {
+            color: #9e9b9bab;
+          }
+          &:focus {
+            border: none;
+            outline: none;
+          }
+          @include respond-down(xs) {
+            margin: 1.5rem 1.5rem 1.5rem 0;
+            // width: 100%;
+          }
+        }
+      }
+    }
+  }
+  &__main {
+    background-color: $main;
+    padding: 2rem $container-padding;
+    @include respond-down(sm) {
+      padding: 4rem $container-padding-sm;
+    }
+    @include respond-down(xs) {
+      padding: 0 1rem;
+    }
+    &__header {
+      @include flexbox;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    &__footer {
+      @include flexbox;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-top: 2rem;
+      @include respond-down(xs) {
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 0;
+      }
+      &__brand {
+        color: $white;
+        & > h1 {
+          font-size: 1.6rem;
+          line-height: 1;
+          text-transform: uppercase;
+          & > a {
+            color: $white;
+          }
+        }
+        & > p {
+          line-height: 1;
+          text-transform: capitalize;
+        }
+        display: block;
+        @include respond-down(xs) {
+          display: none;
+        }
+      }
+      &__social {
+        & > a {
+          display: inline-block;
+          color: $white;
+          font-size: 2rem;
+          transition: all 0.3s ease-in;
+          &:not(:last-child) {
+            margin-right: 1rem;
+          }
+          &:hover {
+            color: $secondary;
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+    &__links {
+      width: 33.333%;
+      list-style-type: none;
+      @include respond-down(xs) {
+        width: 50%;
+        padding: 5rem 0;
+      }
+      &__link {
+        &:not(:last-child) {
+          padding-bottom: 0.8rem;
+        }
+        & > a {
+          color: $white;
+          font-weight: 200;
+          text-transform: capitalize;
+          transform: all 0.3s ease-in;
+          // display: block;
+        }
+        &:hover a {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &__contact {
+      width: 33.333%;
+      @include flexbox;
+      flex-direction: column;
+      @include respond-down(xs) {
+        width: 100%;
+      }
+      &__form {
+        width: 100%;
+        & > input[type="email"] {
+          width: 100%;
+          height: 3rem;
+          border: none;
+          outline: none;
+          caret-color: $main;
+          font-size: 1.1rem;
+          font-weight: 100;
+          color: $text;
+          border-radius: $border-radius;
+          margin-right: 1rem;
+          padding: 0 1rem;
+          &::placeholder {
+            color: #9e9b9bab;
+          }
+          &:focus {
+            border: none;
+            outline: none;
+          }
+        }
+        & > textarea {
+          width: 100%;
+          height: 10rem;
+          border-radius: $border-radius;
+          margin: 1rem 0 0.5rem 0;
+          padding: 1rem;
+          resize: none;
+          border: none;
+          outline: none;
+          &::placeholder {
+            color: #9e9b9bab;
+          }
+          &:focus {
+            border: none;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+  &__copyright {
+    width: 100%;
+    height: 4rem;
+    background-color: $secondary;
+    @include flexbox;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+    text-transform: capitalize;
+  }
+}

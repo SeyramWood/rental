@@ -1,0 +1,256 @@
+.asinyo__merchant {
+  width: 100%;
+  padding: 0 $container-padding;
+  &__single {
+    width: 100%;
+  }
+  &__single__profile {
+    width: 100%;
+    padding: 3rem 0;
+    @include flexbox;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &__company {
+      width: 25%;
+      @include box-shadow;
+      border-radius: $border-radius;
+
+      &__banner {
+        position: relative;
+        width: 100% !important;
+        height: 20rem !important;
+        border-radius: $border-radius;
+        overflow: hidden;
+        @include resize-image;
+      }
+
+      &__content {
+        width: 100%;
+        padding: 1rem;
+      }
+      &__brand {
+        color: $text;
+        letter-spacing: 1.1px;
+      }
+      &__cta {
+        padding: 1rem 0;
+      }
+      &__categories {
+        &__cats {
+          width: 100%;
+          @include flexbox;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          align-items: flex-start;
+          & > span {
+            margin: 0.5rem 0;
+            &:not(:last-child) {
+              margin-right: 1rem;
+            }
+            text-transform: capitalize;
+            font-size: 1rem;
+            padding: 0.3rem 0.6rem;
+            background-color: #9e9b9b38;
+            border-radius: 9999px;
+            cursor: pointer;
+          }
+        }
+      }
+      &__rating {
+        margin-top: 2rem;
+        & > .stars {
+          & > span {
+            &:not(:last-child) {
+              margin-right: 0.5rem;
+            }
+            & > svg {
+              fill: $secondary;
+              stroke: $secondary;
+              width: 1.8rem;
+              height: 1.8rem;
+            }
+          }
+        }
+      }
+    }
+    &__details {
+      width: 75%;
+      &__description {
+        width: 100%;
+        // margin-left: 2rem;
+        // @include box-shadow;
+        @include flexbox;
+        justify-content: flex-start;
+        align-items: flex-start;
+        &__image {
+          position: relative;
+          width: 20rem !important;
+          height: 20rem !important;
+          border-radius: $border-radius;
+          overflow: hidden;
+          @include resize-image;
+          display: none;
+        }
+        &__article {
+          width: 100%; //calc(100% - 25rem);
+          padding: 0 2rem 2rem 2rem;
+          & > h3 {
+            margin-bottom: 1rem;
+          }
+        }
+      }
+      &__images {
+        width: 100%;
+        padding-left: 2rem;
+        &__card {
+          position: relative;
+          width: 100%;
+          height: 30rem;
+          @include box-shadow;
+          overflow: hidden;
+          @include resize-image;
+        }
+      }
+    }
+
+    &__products {
+      padding: 5rem 0;
+      &__content {
+        @include grid-row;
+        &__card {
+          @include grid-column(20%, 30rem, 1.3rem);
+          &:nth-child(5n + 5) {
+            margin-right: 0;
+          }
+          @include respond-down(sm) {
+            @include grid-column(25%, 35rem, 1.3rem);
+            &:nth-child(n + 5) {
+              display: none;
+            }
+            &:nth-child(4n) {
+              margin-right: 0;
+            }
+          }
+          @include respond-down(xs) {
+            @include grid-column(50%, 38rem, 1.3rem);
+            &:nth-child(n + 5) {
+              display: none;
+            }
+            &:nth-child(n + 2) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.asinyo__merchants {
+  width: 100%;
+  &__banner {
+    width: 100%;
+    height: calc(70vh - calc(#{$header-height} + #{$nav-height}));
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.444),
+        rgba(0, 0, 0, 0.544),
+        rgba(0, 0, 0, 0.644)
+      ),
+      url("/images/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-attachment: fixed;
+    padding: 0 $container-padding;
+    margin-bottom: $section-space;
+    @include flexbox;
+    flex-direction: column;
+    justify-content: center;
+    @include respond-down(sm) {
+      padding: 0 $container-padding-sm;
+    }
+    &__cta {
+      width: 69%;
+      margin-bottom: 6rem;
+      color: $white;
+
+      & > h2 {
+        font-size: 4rem;
+        font-weight: bold;
+        line-height: 1.1;
+      }
+      & > p {
+        margin-top: 2rem;
+        font-size: 2rem;
+        font-weight: 200;
+      }
+
+      @include respond-down(sm) {
+        width: 85%;
+        margin-bottom: 3rem;
+        & > h2 {
+          font-size: 3rem;
+        }
+        & > p {
+          margin-top: 2rem;
+          font-size: 1.8rem;
+          font-weight: 200;
+        }
+      }
+      @include respond-down(xs) {
+        width: 100%;
+        margin-bottom: 3rem;
+        & > h2 {
+          font-size: 3.5rem;
+        }
+        & > p {
+          margin-top: 3rem;
+          font-size: 2rem;
+          font-weight: 200;
+        }
+      }
+    }
+    @include respond-down(xs) {
+      height: calc(100vh - calc(#{$header-height-mobile} + #{$nav-height}));
+      background-position: top center;
+    }
+  }
+  &__all {
+    padding: 0 $container-padding;
+    margin-bottom: $section-space;
+    @include respond-down(sm) {
+      padding: 0 $container-padding-sm;
+    }
+    &__header {
+      margin-bottom: 3rem;
+      & > p {
+        font-size: 1.6rem;
+        margin: 2.5rem 0;
+      }
+    }
+    &__merchants {
+      & > .mobile__portrait {
+        display: none;
+        @include respond-down(xs) {
+          display: block;
+        }
+      }
+      & > .s__row {
+        @include respond-down(xs) {
+          display: none;
+        }
+        @include respond-up(sm) {
+          display: block;
+        }
+        & > .s__col {
+          @include respond-down(xs) {
+            &:nth-child(n + 5) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,163 @@
+@mixin card-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing;
+}
+.merchant__card {
+  @include card-bg;
+  overflow: hidden;
+  width: 100%;
+  height: 35rem;
+  @include respond-down(xs) {
+    height: 40rem;
+  }
+
+  &__image {
+    width: 100%;
+    height: 20rem;
+    & > img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+  &__content {
+    width: 100%;
+    height: calc(100% - 20rem);
+    @include flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    &__header {
+      color: $main;
+      @include card-title;
+    }
+    &__cta {
+      padding: 0.5rem 0;
+    }
+    &__link {
+      display: block;
+      & > a {
+        @include flexbox;
+        justify-content: flex-start;
+        align-items: center;
+        text-transform: capitalize;
+        letter-spacing: $letter-spacing;
+        position: inherit;
+        & > span {
+          color: $main;
+          font-weight: bold;
+        }
+        & > span:last-child {
+          line-height: 0 !important;
+          margin-top: -0.4rem;
+          font-size: 2rem;
+          color: $main;
+          padding-left: 0.3rem;
+        }
+      }
+      @include respond-down(xs) {
+        display: none;
+      }
+    }
+  }
+}
+.category__card {
+  @include card-bg;
+  overflow: hidden;
+  width: 100%;
+  height: 20rem;
+  &__image {
+    width: 100%;
+    height: 17rem;
+    & > img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+  &__link {
+    width: 100%;
+    height: calc(100% - 17rem);
+    @include card-title;
+    @include flexbox;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+.product__card {
+  @include card-bg;
+  background-color: $white;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  &__image {
+    width: 100%;
+    height: 11rem;
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+    @include respond-down(sm) {
+      height: 14.5rem;
+    }
+  }
+  &__content {
+    width: 100%;
+    height: calc(100% - 11rem);
+    @include flexbox;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.8rem 0.5rem;
+    @include respond-down(sm) {
+      height: calc(100% - 14.5rem);
+    }
+    &__article {
+      width: 100%;
+      height: 80%;
+      @include flexbox;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      &__title {
+        color: $text;
+        font-weight: bold;
+        text-transform: capitalize;
+        letter-spacing: $letter-spacing;
+        line-height: 1;
+      }
+      &__company {
+        padding: 0.5rem 0;
+        text-transform: lowercase;
+        &::first-letter {
+          text-transform: uppercase;
+        }
+        color: $text-2;
+        line-height: 0.2;
+        font-size: 1.03rem;
+        // @include respond-down(xs) {
+        //   padding: 3rem 0;
+        // }
+      }
+      &__cta {
+        padding: 0.5rem 0;
+        // @include respond-down(xs) {
+        //   padding: 3rem 0;
+        // }
+      }
+      &__price {
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+        font-weight: bolder;
+        // @include respond-down(xs) {
+        //   padding: 3rem 0;
+        // }
+      }
+    }
+    &__btn {
+    }
+  }
+}

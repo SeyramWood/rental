@@ -1,0 +1,156 @@
+.asinyo__header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-5;
+  &__large {
+    width: 100%;
+    height: $header-height;
+    background-color: $main;
+    color: $white;
+    padding: 0 $container-padding;
+    @include flexbox;
+    justify-content: space-between;
+    align-items: center;
+
+    @include respond-down(sm) {
+      padding: 0 $container-padding-sm;
+    }
+
+    &__left {
+      width: 50%;
+      @include flexbox;
+      justify-content: flex-start;
+      align-items: center;
+      &__brand {
+        width: 25%;
+        & > a {
+          @include brand;
+        }
+      }
+      &__search {
+        width: 75%;
+        position: relative;
+        &__container {
+          width: 100%;
+          height: 3.5rem;
+          @include flexbox;
+          align-items: center;
+          flex-wrap: nowrap;
+          background-color: $white;
+          padding: 0.5rem;
+          border-radius: $border-radius;
+
+          & > svg {
+            stroke: #9e9b9bab;
+            fill: #9e9b9bab;
+            width: 2rem;
+            height: 1.8rem;
+            transition: all 0.2s ease-in;
+          }
+          & > input[type="search"] {
+            width: calc(100% - calc(2rem + 6.4rem));
+            height: 100%;
+            padding: 0 0.5rem;
+            border: none;
+            outline: none;
+            caret-color: $main;
+            font-size: 1.1rem;
+            font-weight: 100;
+            color: $text;
+            &::-webkit-search-cancel-button {
+              -webkit-appearance: none;
+            }
+            &::placeholder {
+              color: #9e9b9bab;
+            }
+          }
+          & > button {
+            @include btn;
+            background-color: $main;
+            color: $white;
+            font-weight: 100;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+          }
+          &:focus-within {
+            & > svg {
+              stroke: $secondary;
+              fill: $secondary;
+              width: 2rem;
+              height: 2rem;
+            }
+            & > input[type="search"] {
+              border: none;
+              outline: none;
+            }
+          }
+          &.scaleZ {
+            + .asinyo__header__large__left__search__dropdown {
+              visibility: visible;
+              animation: scaleZ 0.2s ease-in forwards;
+              transform-origin: center center;
+            }
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+        &__dropdown {
+          width: 100%;
+          min-height: 20rem;
+          max-height: 30rem;
+          overflow-x: hidden;
+          @include scrollbar;
+          @include boxshadow;
+          background-color: $white;
+          position: absolute;
+          top: 3.5rem;
+          border-bottom-left-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
+          color: $text;
+          visibility: hidden;
+          perspective: 8000px;
+        }
+      }
+    }
+
+    &__right {
+      width: 50%;
+    }
+    @include respond-down(xs) {
+      display: none;
+    }
+  }
+  &__mobile {
+    display: none;
+    @include respond-down(xs) {
+      display: block;
+      width: 100%;
+      height: $header-height-mobile;
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: $z-index-2;
+      background-color: $main;
+      color: $white;
+      padding: 0 $container-padding-sm;
+      @include flexbox;
+      justify-content: space-between;
+      align-items: center;
+
+      &__menu {
+      }
+      &__brand {
+        & > a {
+          @include brand;
+          font-size: 3rem;
+        }
+      }
+      &__icons {
+      }
+    }
+  }
+}

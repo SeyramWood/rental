@@ -1,0 +1,74 @@
+.asinyo__drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(5, 5, 5, 0.527);
+  opacity: 0;
+  visibility: hidden;
+  z-index: $z-index-5;
+
+  &__content {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    @include boxshadow;
+    @include scrollbar;
+    background-color: $white;
+    color: $text;
+    transform: translateX(100%);
+    padding: 1rem 1rem;
+    @include respond-down(xs) {
+      width: 100%;
+    }
+
+    &__header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__title {
+        color: $main;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &.open {
+    transition: all 0.2s ease-in;
+    opacity: 1;
+    visibility: visible;
+    & > aside {
+      transition: all 0.3s ease-in;
+      transform: translateX(0);
+    }
+  }
+  &.close {
+    & > aside {
+      transition: all 0.2s ease-out;
+      transform: translateX(100%);
+    }
+    transition: all 0.2s ease-out;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__btn {
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    border: none;
+    outline: none;
+    & > svg {
+      stroke: $main;
+      fill: $main;
+      width: 30px;
+      height: 25px;
+    }
+  }
+}

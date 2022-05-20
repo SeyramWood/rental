@@ -1,0 +1,378 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin respond-up($breakpoint) {
+  /**
+        MOBILE FIRST APPROACH
+        Extra small devices (portrait phones, less than 576px)
+        No media query for `xs` since this is the default
+        No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+    **/
+  @if $breakpoint == sm {
+    @media only screen and (min-width: 36em) and (-webkit-min-device-pixel-ratio: 2) and (landscape: portrait) {
+      @content;
+    } // Small devices (landscape phones, 576px and up) 576px  / 16px = 36em
+  } @else if $breakpoint == md {
+    @media only screen and (min-width: 48em) {
+      @content;
+    } // Medium devices (tablets, 768px and up) 768px / 16px = 48em
+  } @else if $breakpoint == lg {
+    @media only screen and (min-width: 62em) {
+      @content;
+    } // Large devices (desktops, 992px and up) 992px / 16px = 62em
+  } @else if $breakpoint == xl {
+    @media only screen and (min-width: 75em) {
+      @content;
+    } // Extra large devices (large desktops, 1200px and up) 1200px / 16px = 75em
+  }
+}
+
+/**
+    DESKTOP FIRST APPROACH
+    No media query necessary for xl breakpoint as it has no upper bound on its width
+**/
+@mixin respond-down($breakpoint) {
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 35.999em) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+      @content;
+    } // Extra Small devices (portrait phones, less than 576px) 575.98px  / 16px = 35.999em
+  } @else if $breakpoint == sm {
+    @media only screen and (max-width: 47.999em) {
+      @content;
+    } // Small devices (landscape phones, less than 768px) 767.98px / 16px = 47.999em
+  } @else if $breakpoint == md {
+    @media only screen and (max-width: 61.999em) {
+      @content;
+    } // Medium devices (tablets, less than 992px) 991.98px / 16px = 61.999em
+  } @else if $breakpoint == lg {
+    @media only screen and (max-width: 74.999em) {
+      @content;
+    } // Large devices (desktops, less than 1200px) 1199.98px / 16px = 74.999em
+  }
+}
+
+/**
+    DESKTOP FIRST APPROACH
+    No media query necessary for xl breakpoint as it has no upper bound on its width
+**/
+
+@mixin respond-only($breakpoint) {
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 35.999em) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+      @content;
+    } // Extra Small devices (portrait phones, less than 576px)
+  } @else if $breakpoint == sm {
+    @media only screen and (min-width: 36em) and (max-width: 47.999em) {
+      @content;
+    } // Small devices (landscape phones, 576px and up)
+  } @else if $breakpoint == md {
+    @media only screen and (min-width: 48em) and (max-width: 61.999em) {
+      @content;
+    } // Medium devices (tablets, 768px and up)
+  } @else if $breakpoint == lg {
+    @media only screen and (min-width: 62em) and (max-width: 74.999em) {
+      @content;
+    } // Large devices (desktops, 992px and up)
+  } @else if $breakpoint == xl {
+    @media only screen and (min-width: 1200px) {
+      @content;
+    } // Extra Large devices (large desktops, 1200px and up)
+  }
+}
+@mixin scrollbar {
+  .scrollhost::-webkit-scrollbar {
+    display: none;
+  }
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #284734;
+    border-radius: 9999px;
+    background: inherit;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5);
+    border-radius: 9999px;
+    background: linear-gradient(180deg, $main 6%, $main 100%, $main 94%);
+  }
+}
+@mixin flexbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex: $values;
+  -webkit-flex: $values;
+  -ms-flex: $values;
+  flex: $values;
+}
+@mixin transform($value) {
+  -webkit-transform: ($value);
+  -moz-transform: ($value);
+  -ms-transform: ($value);
+  transform: ($value);
+}
+@mixin transition($value) {
+  -webkit-transition: ($value);
+  -moz-transition: ($value);
+  -ms-transition: ($value);
+  transition: ($value);
+}
+@mixin box-shadow {
+  box-shadow: 5px 7px 15px 2px rgb(82 90 101 / 12%);
+  //   border: 1px solid #f0f0f0;
+}
+@mixin resize-image {
+  & > span {
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@mixin grid-column($width, $height, $gutter) {
+  width: calc(#{$width} - #{$gutter});
+  height: $height;
+  margin-right: #{$gutter};
+  margin-bottom: #{$gutter};
+}
+@mixin grid-row {
+  width: $max-width;
+  @include flexbox;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+@mixin card-bg {
+  background-color: inherit;
+  border-radius: $border-radius;
+}
+@mixin boxshadow {
+  background-color: inherit;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+@mixin lineboxshadow {
+  background-color: inherit;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+@mixin btn {
+  line-height: 1.499;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+  letter-spacing: $letter-spacing;
+  border-radius: $border-radius;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: transparent;
+  height: 3rem;
+  width: 6.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:active,
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
+
+@mixin brand {
+  color: $white;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  letter-spacing: 1.02px;
+}
+
+@mixin grid-responds {
+  &:not(:last-child) {
+    margin-right: $column-gutter;
+    margin-bottom: $row-gutter;
+  }
+  @include respond-down(md) {
+    &:not(:last-child) {
+      margin-right: $column-gutter;
+    }
+  }
+  @include respond-down(sm) {
+    &:not(:last-child) {
+      margin-right: $column-gutter;
+    }
+  }
+  @include respond-down(xs) {
+    &:not(:last-child) {
+      margin-right: $column-gutter;
+    }
+  }
+}
+
+@mixin grids {
+  &1 {
+    @include grid-1;
+    @include grid-responds;
+    &:nth-child(12n) {
+      margin-right: 0;
+    }
+  }
+  &2 {
+    @include grid-2;
+    @include grid-responds;
+    &:nth-child(6n) {
+      margin-right: 0;
+    }
+  }
+  &3 {
+    @include grid-3;
+    @include grid-responds;
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+  &4 {
+    @include grid-4;
+    @include grid-responds;
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+  &5 {
+    @include grid-5;
+    @include grid-responds;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &6 {
+    @include grid-6;
+    @include grid-responds;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+  &7 {
+    @include grid-7;
+    @include grid-responds;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+  &8 {
+    @include grid-8;
+    @include grid-responds;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+  &9 {
+    @include grid-9;
+    @include grid-responds;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+  &10 {
+    @include grid-10;
+    @include grid-responds;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+  &11 {
+    @include grid-11;
+    @include grid-responds;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+  &12 {
+    @include grid-12;
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+  }
+}
+
+@mixin grid-1 {
+  width: calc((#{$max-width} - (#{$column-gutter} * 11)) / 12);
+}
+@mixin grid-2 {
+  width: calc((#{$max-width} - (#{$column-gutter} * 5)) / 6);
+}
+@mixin grid-3 {
+  width: calc((#{$max-width} - (#{$column-gutter} * 3)) / 4);
+}
+@mixin grid-4 {
+  width: calc((#{$max-width} - (#{$column-gutter} * 2)) / 3);
+}
+@mixin grid-5 {
+  width: calc(
+    ((#{$max-width} - (#{$column-gutter} * 11)) / 12) * 5 + #{$column-gutter} * 4
+  );
+}
+@mixin grid-6 {
+  width: calc((#{$max-width} - #{$column-gutter}) / 2);
+}
+@mixin grid-7 {
+  width: calc(
+    ((#{$max-width} - (#{$column-gutter} * 11)) / 12) * 7 + #{$column-gutter} * 6
+  );
+}
+@mixin grid-8 {
+  width: calc(
+    ((#{$max-width} - (#{$column-gutter} * 2)) / 3) * 2 + #{$column-gutter}
+  );
+}
+@mixin grid-9 {
+  width: calc(
+    ((#{$max-width} - (#{$column-gutter} * 3)) / 4) * 3 + #{$column-gutter}* 2
+  );
+}
+@mixin grid-10 {
+  width: calc(
+    ((#{$max-width} - (#{$column-gutter} * 5)) / 6) * 5 + #{$column-gutter}* 4
+  );
+}
+@mixin grid-11 {
+  width: calc(
+    ((#{$max-width} - (#{$column-gutter} * 11)) / 12) * 11 + #{$column-gutter}*
+      10
+  );
+}
+@mixin grid-12 {
+  width: calc(#{$max-width});
+}

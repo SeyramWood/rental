@@ -1,0 +1,68 @@
+.section__header__wrapper {
+  @include flexbox;
+  justify-content: space-between;
+  align-items: center;
+  &__header {
+    position: relative;
+    display: inline-block;
+    & > h1 {
+      color: $main;
+      font-size: 1.7rem;
+      font-weight: bold;
+      text-transform: capitalize;
+      letter-spacing: 1.1px;
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $main-light;
+    }
+  }
+  &__link {
+    color: $main;
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: 1.1px;
+    display: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    @include respond-down(xs) {
+      display: block;
+    }
+  }
+}
+
+.section__header--secondary {
+  & > h1 {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+    color: $main;
+  }
+}
+
+.section__sub__header {
+  position: relative;
+  & > h1 {
+    color: $main;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    text-align: right;
+    // font-style: oblique;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $main-light;
+  }
+}

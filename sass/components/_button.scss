@@ -1,0 +1,174 @@
+.cta__btn {
+    @include btn;
+    background-color: $main;
+    color: $white;
+    width: 15rem;
+    height: 4.8rem;
+    font-size: 1.6rem;
+  }
+  .merchant__btn {
+    @include btn;
+    background-color: $main;
+    color: $white;
+    width: 25rem;
+    height: 6rem;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+  }
+  .merchant__mobile__btn {
+    @include btn;
+    background-color: $secondary;
+    color: $text;
+    width: 35rem;
+    height: 7rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  .view__more__btn {
+    @include btn;
+    border: 1px solid $main;
+    color: $main;
+    width: 18rem;
+    height: 4.5rem;
+    font-size: 1.6rem;
+  }
+  .product__btn {
+    @include btn;
+    background-color: $main;
+    color: $white;
+    width: 9.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+  .checkout__btn {
+    @include btn;
+    background-color: $main;
+    color: $white;
+    width: 9.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+  .footer__btn {
+    @include btn;
+    text-transform: capitalize;
+    background-color: $secondary;
+    color: $text;
+    width: 8rem;
+    height: 3.5rem;
+    font-size: 1rem;
+  }
+  button.quantity {
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    border: none;
+    outline: none;
+    padding: 0.2rem;
+    border-radius: $border-radius;
+    @include flexbox;
+    justify-content: center;
+    align-items: center;
+    & > svg {
+      stroke: $white;
+      fill: $white;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    &--decrease {
+      background-color: #284734cb;
+    }
+    &--increase {
+      background-color: $main;
+    }
+    &--decrease--secondary {
+      background-color: #daa520cb;
+    }
+    &--increase--secondary {
+      background-color: $secondary;
+    }
+  }
+  
+  button.step {
+    @include btn;
+    background-color: $secondary;
+    width: 9rem;
+    height: 3rem;
+    text-transform: capitalize;
+    &:disabled {
+      background-color: #daa52054;
+    }
+  }
+  
+  .btn--plain {
+    @include btn;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.2rem;
+    background: transparent;
+    border-radius: 9999px;
+    transition: all 0.3s ease-in;
+    & > svg {
+      stroke: $main;
+      fill: $main;
+      width: 3rem;
+      height: 3rem;
+      transition: all 0.3s ease-in;
+    }
+    &:hover {
+      background: $main;
+      & > svg {
+        stroke: $white;
+        fill: $white;
+      }
+    }
+  }
+  
+  button.btn {
+    margin: 0;
+    display: inline-flex;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    align-items: center;
+    vertical-align: bottom;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    letter-spacing: normal;
+    text-transform: capitalize;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    touch-action: manipulation;
+    border-radius: $border-radius;
+    color: rgba(0, 0, 0, 0.65);
+    background-color: transparent;
+    padding: 0.75rem 1.5rem;
+  
+    & > svg {
+      margin-right: 0.5rem;
+    }
+    &.primary {
+      background-color: $main;
+      color: $white;
+    }
+    &.secondary {
+      background-color: $secondary;
+      color: $white;
+    }
+  
+    // &:active,
+    // &:focus {
+    //   border: white solid 2px;
+    //   outline: red solid 0.2rem;
+    // }
+  
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.65;
+    }
+  }
+  

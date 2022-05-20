@@ -1,0 +1,292 @@
+/***********************************
+            BASIC RESET
+***********************************/
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap");
+:root {
+  --swiper-theme-color: crimson;
+  --swiper-navigation-color: crimson;
+  --swiper-pagination-color: crimson;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html {
+  /* 
+    Converting default browser font-size of 16px to 10px in percentage
+    10px / 16px * 100 = 62.5%, thus 1rem = 62.5% = 10px
+    */
+  font-size: 62.5%;
+
+  @include respond-up(lg) {
+    font-size: 75%; // 1rem = 12px, 12/16*100 = 75%
+  }
+  @include respond-down(md) {
+    font-size: 56.25%; // 1rem = 9px, 8/16*100 = 56.25%
+  }
+  @include respond-down(sm) {
+    font-size: 50%; // 1rem = 8px, 8/16 * 100 = 50%;
+  }
+
+  overflow-y: initial;
+}
+body {
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  font-family: $font-family;
+  font-weight: $line-weight-base;
+  font-size: 1.2rem;
+  line-height: $line-height-base;
+  color: $text;
+  background: $bg;
+  min-height: 100vh;
+  // @include scrollbar;
+  @include respond-down(sm) {
+    font-size: 1.6rem;
+  }
+}
+a,
+a:active {
+  color: $text;
+  text-decoration: none;
+}
+::selection {
+  background-color: $main;
+  color: #fff !important;
+}
+ol,
+ul,
+dl {
+  margin: 0 !important;
+}
+#components-layout-demo-fixed-sider .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.login__page{
+  width:100%;
+  height: 100vh;
+  @include flexbox;
+  justify-content: flex-start;
+  align-items: flex-start;
+ 
+  &__cta{
+    width:50%;
+    height:100vh;
+    background-color:$main;
+    @include flexbox;
+    flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  color:$white;
+  & a{
+    padding:1.5rem 3rem;
+    background-color:#fff;
+    color:$main;
+    border-radius:3px;
+    font-weight:bold;
+    font-size:1.8rem;
+  }
+  &>h1{
+    font-size:4rem;
+    font-weight:bold;
+    color:$white;
+  }
+  &>p{
+    font-size:3rem;
+  }
+  }
+  &__form{
+    width:50%;
+    height:100vh;
+    @include flexbox;
+    flex-direction:column;
+  justify-content: center;
+  align-items: left;
+  padding-left: 5%;
+  &>h2{
+    margin-bottom:3rem;
+    color:$main;
+    font-size:2rem;
+    text-align:left;
+  }
+  & > div {
+    width:85%;
+    @include lineboxshadow;
+    background-color:#fff;
+    padding:4rem 3rem;
+    
+    .account__btn{
+      @include flexbox;
+      justify-content: space-between;
+      align-items: center;
+      margin-top:2rem;
+      margin-left:1rem;
+      transition: all .3s ease-in;
+      & a:hover{
+        color:$main;
+        
+      }
+      
+    }
+
+    .ant-btn-primary {
+      color: #fff;
+      border-color: $main;
+      background: $main;
+      text-shadow: 0 -1px 0 $main;
+      box-shadow: 0 2px 0 $main;
+      
+  }
+    
+    }
+    
+  }
+}
+
+.dashboard{
+  width: 100%;
+  @include flexbox;
+  justify-content: flex-start;
+  align-items: flex-start;
+position: relative;
+  &__aside{
+    width: 20rem;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    @include lineboxshadow;
+    overflow-x: hidden;
+    & > header{
+      width: 100%;
+      height: 6rem;
+      @include  flexbox;
+      justify-content: center;
+      align-items: center;
+      &>h1{
+        color:$main;
+        text-transform:capitalize;
+        font-weight: bold;
+        font-size: 2rem;
+      }
+    }
+    &__nav{
+      list-style-type:none;
+      padding: 0 2rem;
+      height: calc(100vh - 26rem);
+      &>li{
+        overflow:hidden;
+        transition: all .2s ease-in;
+        &>a{
+          border-radius: 3px;
+          display:block;
+          padding: 1rem 2rem;
+        }
+        &:not(:last-child){
+
+        }
+        &:hover{
+          &>a{
+            background-color: $main;
+            color: #fff;
+          }
+        }
+      }
+      
+    }
+    &__signout__wrapper{
+      width:100%;
+      height:20rem;
+      @include  flexbox;
+      justify-content: center;
+      align-items: center;
+    }
+      &__signout{
+        padding: 1.5rem 4rem;
+        background-color:$main;
+        border:none;
+        outline:none;
+        color:$white;
+        border-radius:6px;
+        font-weight:bold;
+        font-size:1.6rem;
+        cursor:pointer;
+      }
+  }
+  &__main{
+    width: calc(100% - 20rem);
+    min-height: 100vh;
+    position:relative;
+    &__header{
+      width:100%;
+      height:6rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.103);
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: $z-index-5;
+      background-color: #fefefe;
+      @include  flexbox;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4rem 0 0;
+    }
+    
+    &__content{
+      width: 100%;
+      min-height: calc(100vh - 14rem);
+      padding: 2rem;
+    }
+      
+    &__footer{
+      width:100%;
+      height:8rem;
+      @include flexbox;
+      justify-content:center;
+      align-items: center;
+    }
+  }
+}
+
+.table__header{
+  @include flexbox;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  &__left{}
+  &__right{}
+}
+
+.form__button{
+  @include flexbox;
+  justify-content: flex-end;
+  align-items: center;
+  &>button:first-child{
+    margin-right: 1rem;
+  }
+  // padding: 2rem 0;
+}
+
+.loading__page{
+  width:100%;
+  height:100vh;
+  @include flexbox;
+  justify-content:center;
+  align-items:center;
+  &> h3{
+    color:$main;
+    font-size:2rem;
+    letter-spacing:1.2px;
+  }
+}

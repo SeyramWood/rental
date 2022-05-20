@@ -1,0 +1,91 @@
+.asinyo__stepper {
+  width: 100%;
+  &__header {
+    width: 100%;
+    margin-bottom: 2rem;
+    @include flexbox;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__label {
+      width: 100%;
+      @include flexbox;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      &__button {
+        width: 100%;
+        @include flexbox;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        & > button {
+          width: 4rem;
+          height: 4rem;
+          border: none;
+          border-radius: 9999px;
+          background: $main-light;
+          font-weight: bold;
+          font-size: 1.6rem;
+          color: $white;
+          transition: background 0.3s ease-in;
+          pointer-events: none;
+
+          &>svg{
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+
+          &.active {
+            background: $main;
+          }
+        }
+      }
+      &:not(:last-child) {
+        & > .asinyo__stepper__header__label__button {
+          &::before,
+          &::after {
+            position: absolute;
+            left: calc(50% + 2.5rem);
+            display: block;
+            content: "";
+            height: 1px;
+          }
+          &::before {
+            width: calc(100% - 5rem);
+            background-color: $main-light;
+          }
+          &::after {
+            width: 0;
+            background-color: $main;
+            transition: width 0.7s ease-in;
+          }
+          &.active::after {
+            width: calc(100% - 5rem);
+          }
+          &.completed::after {
+            width: calc(100% - 5rem);
+          }
+        }
+      }
+
+      &__text {
+        margin-top: 1rem;
+        text-transform: capitalize;
+        font-weight: bold;
+      }
+    }
+  }
+  &__body {
+    width: 100%;
+  }
+
+  &__btns{
+    width: 100%;
+    @include flexbox;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+  }
+}

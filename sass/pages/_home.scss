@@ -1,0 +1,494 @@
+.home {
+  width: 100%;
+  &__banner {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.805), rgba(0, 0, 0, 0.744), rgba(0, 0, 0, 0.492)),
+      url("/images/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-attachment: fixed;
+    padding: 0 $container-padding;
+    // margin-bottom: $section-space;
+
+    &__nav {
+      width: 100%;
+      height: 10rem;
+      @include flexbox;
+      justify-content: space-between;
+      align-items: center;
+      &__brand {
+        width: 5rem;
+        white-space: break-spaces;
+        line-height: 0.3;
+        & > a {
+          text-transform: lowercase;
+          color: $main;
+          font-size: 4rem;
+          & > span {
+            text-transform: uppercase;
+            color: white;
+            font-size: 2rem;
+            padding-left: 5.5rem;
+          }
+        }
+      }
+      &__links {
+        & > ul {
+          list-style-type: none;
+          @include flexbox;
+          justify-content: flex-start;
+          align-items: center;
+          & > li {
+            &:not(:last-child) {
+              margin-right: 2rem;
+              cursor: pointer;
+              position: relative;
+
+              &::after {
+                width: 0;
+                height: 1.5px;
+                content: "";
+                display: block;
+                position: absolute;
+                background-color: $main;
+                transition: all 0.5s ease-out 0.1s;
+              }
+              &:hover {
+                &::after {
+                  width: 100%;
+                }
+                & > a {
+                  color: $main;
+                }
+              }
+            }
+            & > a:not(.button) {
+              text-transform: uppercase;
+              color: $white;
+              font-size: 1.6rem;
+              transition: all 0.5s ease-out 0.1s;
+            }
+            & > a.button {
+              text-transform: uppercase;
+              color: $white;
+              font-size: 1.6rem;
+              background-color: $main;
+              padding: 1rem 2.5rem;
+              border-radius: 3px;
+              margin-left: 5rem;
+            }
+          }
+        }
+      }
+    }
+    &__cta {
+      width: 100%;
+      height: calc(100vh - 10rem);
+      color: $white;
+      @include flexbox;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      & > h2 {
+        font-size: 8rem;
+        font-weight: bold;
+        line-height: 1.1;
+        color: $white;
+      }
+      & > p {
+        margin-top: 2rem;
+        font-size: 4rem;
+        font-weight: 200;
+        margin-bottom: 10rem;
+      }
+
+      & > .btn__down {
+        @include btn;
+        width: 5rem;
+        height: 5rem;
+        font-size: 3rem;
+        border-radius: 9999px;
+        background: $main;
+        color: $white;
+        animation: moveDown 0.9s ease-in 0.2s infinite alternate forwards;
+        &:hover {
+          animation-play-state: paused;
+        }
+      }
+
+      @include respond-down(sm) {
+        width: 85%;
+        margin-bottom: 3rem;
+        & > h2 {
+          font-size: 3rem;
+        }
+        & > p {
+          margin-top: 2rem;
+          font-size: 1.8rem;
+          font-weight: 200;
+        }
+      }
+      @include respond-down(xs) {
+        width: 100%;
+        margin-bottom: 3rem;
+        & > h2 {
+          font-size: 3.5rem;
+        }
+        & > p {
+          margin-top: 3rem;
+          font-size: 2rem;
+          font-weight: 200;
+        }
+      }
+    }
+
+    @include respond-down(xs) {
+      height: calc(100vh - calc(#{$header-height-mobile} + #{$nav-height}));
+      background-position: top center;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    margin: 15rem 0;
+    padding: 0 $container-padding;
+    @include flexbox;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    &__aside {
+      width: 25%;
+      padding: 5rem 2rem;
+      @include lineboxshadow;
+      text-align: center;
+      position: sticky;
+      top: 2rem;
+      left: 0;
+      & > h3 {
+        margin-bottom: 3rem;
+        font-size: 2rem;
+        position: relative;
+        &::after {
+          position: absolute;
+          display: block;
+          content: "";
+          width: 50%;
+          height: 2px;
+          left: 25%;
+          background: $main;
+        }
+      }
+    }
+    &__main {
+      width: 75%;
+      padding-left: 2rem;
+
+      & > .no__record {
+      }
+    }
+  }
+
+  &__about {
+    width: 100%;
+    padding: 15rem $container-padding;
+    @include flexbox;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: blanchedalmond;
+    &__story {
+      width: 50%;
+      margin-right: 5rem;
+      &__header {
+        margin-bottom: 2rem;
+        letter-spacing: 1.3px;
+        font-size: 2rem;
+        & > span {
+          color: $main;
+        }
+      }
+      &__article {
+        & > p {
+          font-style: italic;
+          font-weight: bold;
+          line-height: 2.5;
+        }
+      }
+    }
+    &__image {
+      width: 50%;
+      height: 45rem;
+      background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.405),
+          rgba(0, 0, 0, 0.844),
+          rgba(0, 0, 0, 0.844),
+          rgba(0, 0, 0, 0.492)
+        ),
+        url("/about.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top right;
+      // background-attachment: fixed;
+      @include flexbox;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__cta {
+        color: $white;
+        font-size: 5rem;
+        font-weight: bold;
+        & > h1 {
+          line-height: 0;
+          color: $white;
+        }
+        & > h1:first-child {
+          margin-bottom: 6rem;
+        }
+        & > h1:last-child {
+          color: $main;
+        }
+      }
+    }
+  }
+  &__contact {
+    width: 100%;
+    // margin: 10rem 0;
+    padding: 20rem $container-padding;
+    position:relative;
+
+    &__top {
+      width: 100%;
+      @include flexbox;
+      justify-content: space-between;
+      align-items: flex-start;
+      &__image {
+        width: 60%;
+        height: 30rem;
+        background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.405),
+            rgba(0, 0, 0, 0.444),
+            rgba(0, 0, 0, 0.492)
+          ),
+          url("/contact.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top top;
+        -webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+      }
+      &__cta {
+        width: 40%;
+        // height: 30rem;
+        padding-left: 10rem;
+        // background-color: #e6e6e6;
+        &>h1{
+          margin-bottom: 2rem;
+        letter-spacing: 1.3px;
+        font-size: 2rem;
+        }
+        &>p{
+          line-height: 2.5;
+        }
+      }
+    }
+
+    &__bottom{
+      width: 60%;
+      height: 30rem;
+      position: absolute;
+      bottom: 3rem;
+      left: calc(50% - 30%);
+      @include flexbox;
+      justify-content: space-between;
+      &__content{
+        height: 100%;
+        @include boxshadow;
+        background-color:$white;
+        border-radius: 6px;
+        @include flexbox;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding:2rem 5rem;
+        &:first-child{
+          width: 49%;
+        }
+        &:last-child{
+          width: 49%;
+        }
+
+        &__header{
+          text-align:center;
+          font-weight:bold;
+          font-size: 1.6rem;
+          transition: all .3s ease-out;
+          &>svg{
+            font-size: 4rem;
+            transition: all .3s ease-out;
+          }
+        }
+        &>p{
+          margin:2rem 0;
+        }
+
+        &>a{
+          font-size: 1.6rem;
+          transition: all .3s ease-out;
+          &:hover{
+            text-decoration:underline;
+            transform: scale(1.1);
+            color:$main;
+          }
+        }
+
+        &:hover{
+          .home__contact__bottom__content__header{
+            color: $main;
+            &>svg{
+              fill: $main;
+              stroke: $main;
+              transform:scale(1.2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.product {
+  @include flexbox;
+  justify-content: flex-start;
+  align-items: flex-start;
+  @include lineboxshadow;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &__image {
+    width: 30rem;
+    height: 20rem;
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__details {
+    width: calc(100% - 40rem);
+    height: 20rem;
+    padding: 1rem 0 1rem 1rem;
+    @include flexbox;
+    flex-direction: column;
+    justify-content: space-between;
+    &__top {
+      & > .title {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+      & > p {
+      }
+    }
+    &__bottom {
+      width: 100%;
+      @include flexbox;
+      justify-content: flex-start;
+      align-items: flex-end;
+      color: $text-2;
+      & > svg {
+        font-size: 2.2rem;
+      }
+    }
+  }
+  &__price {
+    width: 10rem;
+    text-align: right;
+    padding: 1rem;
+    color: $main;
+    & > p {
+      line-height: 0.5;
+    }
+  }
+
+  &__view {
+    width: 100%;
+    padding: 2rem $container-padding;
+    &__image {
+      width: 100%;
+      height: 50rem;
+      &__wrapper {
+        height: 100%;
+        & img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    &__info {
+      @include flexbox;
+      justify-content: space-between;
+    }
+  }
+}
+.pay__btn {
+  @include btn;
+  border: 1px solid $main;
+  color: $main;
+  &:hover {
+    transform: scale(0.8);
+  }
+}
+.load__more {
+  width: 100%;
+  @include flexbox;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
+  & > button {
+    @include btn;
+    width: 12rem;
+    height: 5rem;
+    border: 1px solid $main;
+    color: $main;
+    text-transform: uppercase;
+    &:hover {
+      transform: scale(0.8);
+    }
+  }
+}
+.btn__up {
+  @include btn;
+  width: 5rem;
+  height: 5rem;
+  font-size: 3rem;
+  border-radius: 9999px;
+  background: $main;
+  color: $white;
+  animation: moveDown 0.9s ease-in 0.2s infinite alternate forwards;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 12rem;
+  margin-top: 15rem;
+  @include flexbox;
+  justify-content: center;
+  align-items: center;
+  background: $main;
+  color: $white;
+}
