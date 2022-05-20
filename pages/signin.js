@@ -85,7 +85,7 @@ const SignIn = () => {
             <Button type="primary" htmlType="submit" loading={isSubmitting}>
               Sign in
             </Button>
-            <span >I don't have an account. | <Link href="/signup">Sig up</Link></span>
+            <span >{`I don't have an account.`} | <Link href="/signup">Sig up</Link></span>
             </div>
           </Form.Item>
         </Form>
