@@ -259,9 +259,9 @@ export default function Home() {
               service and uniqueness.
             </p>
             <p>
-              We hope you enjoy our service as much as we enjoy offering them to
+             {` We hope you enjoy our service as much as we enjoy offering them to
               you. If you have any questions or comments, please don't hesitate
-              to contact us.
+              to contact us.`}
             </p>
           </article>
         </div>
@@ -277,7 +277,7 @@ export default function Home() {
          <div className="home__contact__top__image"></div>
          <div className="home__contact__top__cta">
          <h1>Meet Us</h1>
-         <p>Want to get in touch? We love to hear from you. Here's is how you can reach us... </p>
+         <p>{`Want to get in touch? We love to hear from you. Here's is how you can reach us...`} </p>
          </div>
         </div>
         <div className="home__contact__bottom">
@@ -295,7 +295,7 @@ export default function Home() {
               {<IoChatbubbleEllipsesOutline/>}
               <p>Contact customer support</p>
             </div>
-            <p>Sometimes you need a help for your rentals issues. Don't worry...we are here for you.</p>
+            <p>{`Sometimes you need a help for your rentals issues. Don't worry...we are here for you.`}</p>
             <a href="tel:+233265518694">+233 26 551 8694</a>
           </div>
           
