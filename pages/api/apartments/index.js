@@ -4,7 +4,7 @@ import dbConnection from '../../../libs/dbConnection';
 
 
 export default async function handler(req, res) {
-    await dbConnection()
+    await dbConnection();
 
     const {method} = req;
 

@@ -1,7 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { IoChevronDownOutline, IoChevronUpOutline, IoCallOutline, IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import {
+  IoChevronDownOutline,
+  IoChevronUpOutline,
+  IoCallOutline,
+  IoChatbubbleEllipsesOutline,
+} from "react-icons/io5";
 import { MdLocationPin } from "react-icons/md";
 import SideDrawer from "../components/common/SideDrawer";
 import { SelectField } from "./../components/common/input";
@@ -11,7 +16,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
-import Axios from '../libs/axios'
+import Axios from "../libs/axios";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import Product from "../components/product/Product";
 
@@ -35,8 +40,7 @@ export default function Home() {
   const handleCityChange = (e) => {
     setIsSearching(true);
     setCurrentCity((state) => (state = e.target.value));
-    Axios
-      .get("/apartments")
+    Axios.get("/apartments")
       .then((res) => {
         const results = res.data.filter((r) => {
           if (
@@ -62,8 +66,7 @@ export default function Home() {
   };
   const loadMore = () => {
     setLoading(true);
-    Axios
-      .get("/apartments")
+    Axios.get("/apartments")
       .then((res) => {
         const ln = products.length;
         const data = res.data.slice(ln, ln + 3);
@@ -77,8 +80,7 @@ export default function Home() {
       });
   };
   useEffect(() => {
-    Axios
-      .get("/cities")
+    Axios.get("/cities")
       .then((res) => {
         setCities((c) => (c = [...res.data]));
         // console.log(res.data);
@@ -94,8 +96,7 @@ export default function Home() {
     }
   }, [searchKey.region, cities]);
   useEffect(() => {
-    Axios
-      .get("/apartments")
+    Axios.get("/apartments")
       .then((res) => {
         const data = res.data.slice(0, 3);
         setProducts((p) => (p = [...data]));
@@ -247,7 +248,7 @@ export default function Home() {
               service and uniqueness.
             </p>
             <p>
-             {` We hope you enjoy our service as much as we enjoy offering them to
+              {` We hope you enjoy our service as much as we enjoy offering them to
               you. If you have any questions or comments, please don't hesitate
               to contact us.`}
             </p>
@@ -255,38 +256,42 @@ export default function Home() {
         </div>
         <div className="home__about__image">
           <div className="home__about__image__cta">
-          <h1>The</h1>
-          <h1>Difference!</h1>
+            <h1>The</h1>
+            <h1>Difference!</h1>
           </div>
         </div>
       </section>
       <section className="home__contact" id="contactSection">
         <div className="home__contact__top">
-         <div className="home__contact__top__image"></div>
-         <div className="home__contact__top__cta">
-         <h1>Meet Us</h1>
-         <p>{`Want to get in touch? We love to hear from you. Here's is how you can reach us...`} </p>
-         </div>
+          <div className="home__contact__top__image"></div>
+          <div className="home__contact__top__cta">
+            <h1>Meet Us</h1>
+            <p>
+              {`Want to get in touch? We love to hear from you. Here's is how you can reach us...`}{" "}
+            </p>
+          </div>
         </div>
         <div className="home__contact__bottom">
           <div className="home__contact__bottom__content">
             <div className="home__contact__bottom__content__header">
-              {<IoCallOutline/>}
+              {<IoCallOutline />}
               <p>Talk to a representative</p>
             </div>
-            <p>Interested in Seydel Apartments? Just pick up the phone and call any of our reps.</p>
+            <p>
+              Interested in Seydel Apartments? Just pick up the phone and call
+              any of our reps.
+            </p>
             <a href="tel:+233557467520">+233 55 746 7520</a>
           </div>
-          
+
           <div className="home__contact__bottom__content">
             <div className="home__contact__bottom__content__header">
-              {<IoChatbubbleEllipsesOutline/>}
+              {<IoChatbubbleEllipsesOutline />}
               <p>Contact customer support</p>
             </div>
             <p>{`Sometimes you need a help for your rentals issues. Don't worry...we are here for you.`}</p>
             <a href="tel:+233265518694">+233 26 551 8694</a>
           </div>
-          
         </div>
       </section>
       <footer className="footer">
@@ -309,7 +314,7 @@ export default function Home() {
               {product &&
                 product.images.map((image) => (
                   <SwiperSlide key={image}>
-                    <img src={image} alt='property image'/>
+                    <img src={image} alt="property image" />
                   </SwiperSlide>
                 ))}
             </Swiper>
